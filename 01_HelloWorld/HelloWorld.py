@@ -38,7 +38,6 @@ class SayHelloAtInit_Derived(SayHelloAtInit, LoggerHelper.Dumper):
         self.name = 'SayHelloAtInit_Derived'
         print(self.words, ' - Derived')
 
-
     # ----------------------------------------------------------------------------------
 sayHelloByFunction()
 
@@ -54,3 +53,7 @@ person.say()
 person.dump()
 person.name = 'SayHelloAtInit_Derived_changed'
 person.dump()
+
+# 需要注意的特性, 修改了name後, 之後建立的物件的name成員的內容也是修改後的值.
+new_persion = SayHelloAtInit_Derived('Hello world by class __init__ new')
+person.dump()  # SayHelloAtInit_Derived_changed
