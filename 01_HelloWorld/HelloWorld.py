@@ -9,12 +9,18 @@ def sayHelloByFunction():
 
 class SayHello:
     def say(self):
-        self.name = 'SayHallo'
+        self.__name = 'SayHallo'
         print('Hello world by class')
 
-    def get_name(self):
+    @property
+    def name(self):
         'get name property'
-        return self.name
+        return self.__name
+
+    @name.setter
+    def name(self, input_name):
+        'set name property'
+        self.__name = input_name
 
 
 class SayHelloAtInit:
@@ -32,6 +38,7 @@ class SayHelloAtInit_Derived(SayHelloAtInit, LoggerHelper.Dumper):
         self.name = 'SayHelloAtInit_Derived'
         print(self.words, ' - Derived')
 
+
     # ----------------------------------------------------------------------------------
 sayHelloByFunction()
 
@@ -44,4 +51,6 @@ person.say()
 person = SayHelloAtInit_Derived('Hello world by class __init__')
 person.say()
 
+person.dump()
+person.name = 'SayHelloAtInit_Derived_changed'
 person.dump()
